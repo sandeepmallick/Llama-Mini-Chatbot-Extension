@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SANDEEP LLAMA AI</title>
+  <style>
+    :root {
+      --primary-color: #ff5252;
+      --primary-hover: #0055ff;
+      --background: #160505;
+      --text-color: #ffffff;
+      --border-color: #00ffe5;
+      --card-bg: #000000;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.4;
+      color: var(--text-color);
+      background-color: var(--background);
+      margin: 0;
+      padding: 20px;
+      box-sizing: border-box;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 350px; /* Standard extension popup width */
+      min-height: 200px;
+    }
+
+    .container {
+      background-color: var(--card-bg);
+      border-radius: 12px;
+      padding: 20px;
+      width: 100%;
+      max-width: 400px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+    }
+
+    h3 {
+      color: var(--primary-color);
+      text-align: center;
+      margin: 0 0 20px;
+      font-size: 20px;
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 10px;
+    }
+
+    .chat-container {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    textarea {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      resize: none;
+      min-height: 80px;
+      font-family: inherit;
+      font-size: 14px;
+      box-sizing: border-box;
+      background-color: #444654;
+      color: white;
+      transition: border 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    textarea:focus {
+      outline: none;
+      border-color: var(--primary-color);
+      box-shadow: 0 0 5px var(--primary-color);
+    }
+
+    .button-container {
+      display: flex;
+      gap: 10px;
+      justify-content: space-between;
+    }
+
+    button {
+      flex: 1;
+      background-color: var(--primary-color);
+      color: #000;
+      border: none;
+      padding: 10px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: bold;
+      transition: all 0.3s ease;
+    }
+
+    button:hover {
+      background-color: var(--primary-hover);
+      transform: translateY(-1px);
+    }
+
+    button:disabled {
+      background-color: #888;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .clear-btn {
+      background-color: #ff5252;
+    }
+
+    .clear-btn:hover {
+      background-color: #eeff00;
+    }
+
+    #response {
+      background-color: #0000003b;
+      color: #afbe2d;
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 10px;
+      min-height: 60px;
+      max-height: 180px;
+      overflow-y: auto;
+      font-size: 14px;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+
+    .status {
+      text-align: center;
+      color: #ccc;
+      font-style: italic;
+      font-size: 12px;
+    }
+
+    .loading {
+      display: inline-block;
+      width: 16px;
+      height: 16px;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      border-radius: 50%;
+      border-top-color: var(--primary-color);
+      animation: spin 1s linear infinite;
+      vertical-align: middle;
+      margin-left: 5px;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    /* Custom Scrollbar */
+    #response::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    #response::-webkit-scrollbar-track {
+      background: #eee;
+    }
+
+    #response::-webkit-scrollbar-thumb {
+      background: #bbb;
+      border-radius: 4px;
+    }
+
+    #response::-webkit-scrollbar-thumb:hover {
+      background: #999;
+    }
+
+    @media (max-width: 480px) {
+      .container {
+        width: 90%;
+      }
+    }
+    .title{
+      font-size: 24px;
+      color: rgb(255, 0, 0)
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h3 class="title">SANDEEP AI</h3>
+    <div class="chat-container">
+      <textarea id="userInput" rows="3" placeholder="Ask something..." aria-label="Type your question here"></textarea>
+      <div class="button-container">
+        <button id="clearBtn" class="clear-btn">Clear</button>
+        <button id="sendBtn">
+          <span id="buttonText">Send</span>
+          <span id="loadingIndicator" class="loading" style="display: none;"></span>
+        </button>
+      </div>
+      <div class="status" id="status"></div>
+      <div id="response" aria-live="polite"></div>
+    </div>
+  </div>
+
+  <script src="backend.js"></script>
+</body>
+</html>
