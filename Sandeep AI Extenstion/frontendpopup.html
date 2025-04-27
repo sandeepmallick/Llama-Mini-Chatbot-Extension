@@ -1,20 +1,22 @@
 <!DOCTYPE html>
+</head>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>SANDEEP LLAMA AI</title>
-  <style>
-    :root {
-      --primary-color: #ff5252;
-      --primary-hover: #0055ff;
-      --background: #160505;
-      --text-color: #ffffff;
-      --border-color: #00ffe5;
-      --card-bg: #000000;
-    }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="popup.css">
+    <title>SANDEEP LLAMA AI</title>
+    <style>
+      :root {
+        --primary-color: #ff5252;
+        --primary-hover: #04ff00;
+        --background: #160505;
+        --text-color: #ffffff;
+        --border-color: #00ffe5;
+        --card-bg: #000000;
+        }
 
-    body {
+        body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       line-height: 1.4;
       color: var(--text-color);
@@ -114,7 +116,7 @@
 
     #response {
       background-color: #0000003b;
-      color: #afbe2d;
+      color: #ffee00;
       border: 1px solid var(--border-color);
       border-radius: 8px;
       padding: 10px;
@@ -177,24 +179,32 @@
       color: rgb(255, 0, 0)
     }
   </style>
-</head>
-<body>
-  <div class="container">
-    <h3 class="title">SANDEEP AI</h3>
-    <div class="chat-container">
-      <textarea id="userInput" rows="3" placeholder="Ask something..." aria-label="Type your question here"></textarea>
-      <div class="button-container">
-        <button id="clearBtn" class="clear-btn">Clear</button>
-        <button id="sendBtn">
-          <span id="buttonText">Send</span>
-          <span id="loadingIndicator" class="loading" style="display: none;"></span>
-        </button>
-      </div>
-      <div class="status" id="status"></div>
-      <div id="response" aria-live="polite"></div>
-    </div>
-  </div>
 
-  <script src="backend.js"></script>
-</body>
-</html>
+
+    </html>
+    <body>
+      <div class="container">
+        <h3 class="title">SANDEEP AI</h3>
+        <div class="chat-container">
+          <textarea id="userInput" rows="3" placeholder="Ask something..." aria-label="Type your question here"></textarea>
+          <div class="button-container">
+            <button id="clearBtn" class="clear-btn">Clear</button>
+            <button id="sendBtn">
+              <span id="buttonText">Send</span>
+              <span id="loadingIndicator" class="loading" style="display: none;"></span>
+            </button>
+            <!-- <button>
+              Sign up
+              <div class="arrow-wrapper">
+                  <div class="arrow"></div>
+              </div>
+          </button> -->
+          </div>
+          <div class="status" id="status"></div>
+          <div id="response" aria-live="polite"></div>
+        </div>
+      </div>
+    
+      <script src="backend.js"></script>
+    </body>
+    
