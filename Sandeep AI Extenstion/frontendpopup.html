@@ -9,7 +9,8 @@
     <style>
       :root {
         --primary-color: #ff5252;
-        --primary-hover: #04ff00;
+        --primary-hover: #22ff00  ;
+        --primary-ahover: #000000;
         --background: #160505;
         --text-color: #ffffff;
         --border-color: #00ffe5;
@@ -152,39 +153,33 @@
     }
 
     /* Custom Scrollbar */
-    #response::-webkit-scrollbar {
-      width: 6px;
-    }
-
-    #response::-webkit-scrollbar-track {
-      background: #eee;
-    }
-
-    #response::-webkit-scrollbar-thumb {
-      background: #bbb;
-      border-radius: 4px;
-    }
-
-    #response::-webkit-scrollbar-thumb:hover {
-      background: #999;
-    }
-
-    @media (max-width: 480px) {
-      .container {
-        width: 90%;
-      }
-    }
-    .title{
+    .title {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px; /* space between text and ghost */
       font-size: 24px;
-      color: rgb(255, 0, 0)
+      color: rgb(255, 0, 0);
     }
-  </style>
+ 
+    .title a{
+      text-decoration: none;
+      color: rgb(255, 0, 0);
+      transition: 2s ease;
 
+    }
+    .title a:hover {
+      color: var(--primary-ahover) !important;
+   }
+  </style>
 
     </html>
     <body>
       <div class="container">
-        <h3 class="title">SANDEEP AI</h3>
+        <h3 class="title" style="display: flex; align-items: center; gap: 10px;">
+          <a href="https://c8sm8s.netlify.app/">SANDEEP AI</a>
+          <div class="loader"></div>
+        </h3>
         <div class="chat-container">
           <textarea id="userInput" rows="3" placeholder="Ask something..." aria-label="Type your question here"></textarea>
           <div class="button-container">
@@ -193,18 +188,15 @@
               <span id="buttonText">Send</span>
               <span id="loadingIndicator" class="loading" style="display: none;"></span>
             </button>
-            <!-- <button>
-              Sign up
-              <div class="arrow-wrapper">
-                  <div class="arrow"></div>
-              </div>
-          </button> -->
           </div>
           <div class="status" id="status"></div>
           <div id="response" aria-live="polite"></div>
         </div>
-      </div>
+      </div></a>
     
       <script src="backend.js"></script>
     </body>
     
+
+    
+

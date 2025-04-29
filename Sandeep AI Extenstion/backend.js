@@ -1,4 +1,3 @@
-// backend.js
 document.addEventListener('DOMContentLoaded', function() {
     const userInput = document.getElementById('userInput');
     const sendBtn = document.getElementById('sendBtn');
@@ -8,17 +7,14 @@ document.addEventListener('DOMContentLoaded', function() {
     const buttonText = document.getElementById('buttonText');
     const loadingIndicator = document.getElementById('loadingIndicator');
 
-    // API configuration - Using Groq's Llama 3 as alternative
+    // API configuration - Using Groq's Llama 3
     const API_URL = 'https://api.groq.com/openai/v1/chat/completions';
     const API_KEY = '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'; // Replace with your Groq API key
     
-    // Available models: "llama3-8b-8192" or "llama3-70b-8192"
     const MODEL_NAME = 'llama3-70b-8192';
 
-    // Focus the textarea on page load
     userInput.focus();
 
-    // Enable/disable send button based on input
     userInput.addEventListener('input', function() {
         sendBtn.disabled = userInput.value.trim() === '';
     });
@@ -32,7 +28,6 @@ document.addEventListener('DOMContentLoaded', function() {
         userInput.focus();
     });
 
-    // Handle Enter key for submission (Shift+Enter for new line)
     userInput.addEventListener('keydown', function(e) {
         if (e.key === 'Enter' && !e.shiftKey) {
             e.preventDefault();
@@ -76,7 +71,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const question = userInput.value.trim();
         if (!question) return;
 
-        // Show loading state
+        // Show loading
         sendBtn.disabled = true;
         buttonText.style.display = 'none';
         loadingIndicator.style.display = 'inline-block';
@@ -115,7 +110,7 @@ async function getLlamaResponse(userMessage) {
       'Authorization': `Bearer ${API_KEY}`
     },
     body: JSON.stringify({
-      model: 'llama3-70b-8192', // or use 'llama3-8b-8192' if needed
+      model: 'llama3-70b-8192',
       messages: [
         { role: 'system', content: 'You are a helpful assistant.' },
         { role: 'user', content: userMessage }
