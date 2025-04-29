@@ -17,19 +17,19 @@ Easy to install and use
 
 4.Select the folder where your extension files are located
 
-5.use It
-Pin the extension to your toolbar for quick start
+5.Pin the extension to your toolbar for quick start
 
-Click the icon to open Sandeep AI
+6.Click the icon to open Sandeep AI
 
-Type your questions and hit Send
+7.Type your questions and hit Send
 
-Get real-time AI responses
+8.Get real-time AI responses
 
 # Tech Used
 HTML, CSS, JavaScript
 
 LLaMA API
+
 Chrome Extensions API
 
 # Future improvements
