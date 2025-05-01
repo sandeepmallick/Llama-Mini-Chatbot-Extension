@@ -8,9 +8,9 @@ Clear and send functionality
 Easy to install and use
 
 # How to Set Up & Activate in Chrome(steps)
-1.Download this flies-
+1.Download this flies-https://github.com/sandeepmallick/Llama-Mini-Chatbot-Extension/tree/main/Sandeep%20AI%20Extenstion
 
-1.Go to chrome://extensions/
+1.than Go to chrome://extensions/
 
 2.Enable Developer mode (top-right corner)
 
