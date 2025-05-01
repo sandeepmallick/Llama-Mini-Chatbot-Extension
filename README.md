@@ -5,7 +5,6 @@ Sandeep AI is a lightweight Chrome extension that brings the power of LLaMA API 
 Chat with LLaMA API from your browser
 Simple and sleek UI
 Clear and send functionality
-Fully client-side (privacy-first)
 Easy to install and use
 
 # How to Set Up & Activate in Chrome(steps)
