@@ -8,6 +8,8 @@ Clear and send functionality
 Easy to install and use
 
 # How to Set Up & Activate in Chrome(steps)
+1.Download this flies-
+
 1.Go to chrome://extensions/
 
 2.Enable Developer mode (top-right corner)
