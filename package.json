@@ -1,0 +1,27 @@
+{
+  "name": "sandeep-ai-chrome-extension",
+  "version": "1.0.0",
+  "description": "Sandeep AI - Chrome Mini Chatbot Extension with LLaMA API",
+  "main": "index.js",
+  "scripts": {
+    "dev": "echo 'Chrome extension ready for development'",
+    "build": "echo 'Building Chrome extension...'",
+    "test": "echo 'No tests specified'"
+  },
+  "keywords": [
+    "chrome-extension",
+    "ai",
+    "chatbot",
+    "llama",
+    "tailwind"
+  ],
+  "author": "Sandeep Mallick",
+  "license": "MIT",
+  "devDependencies": {
+    "tailwindcss": "^3.4.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sandeepmallick/Llama-Mini-Chatbot-Extension"
+  }
+}
