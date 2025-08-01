@@ -1,202 +1,193 @@
 <!DOCTYPE html>
-</head>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <link rel="stylesheet" href="popup.css">
+    <script src="https://cdn.tailwindcss.com"></script>
     <title>SANDEEP LLAMA AI</title>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#ff5252',
+                        'primary-hover': '#22ff00',
+                        'primary-dark': '#000000',
+                        background: '#160505',
+                        'card-bg': '#000000',
+                        'border-color': '#00ffe5',
+                        'response-bg': '#0000003b',
+                        'response-text': '#ffee00'
+                    },
+                    animation: {
+                        'bounce-gentle': 'bounce 1s infinite',
+                        'pulse-glow': 'pulse-glow 2s ease-in-out infinite alternate',
+                        'shake': 'shake 0.3s linear infinite',
+                        'float': 'float 3s ease-in-out infinite',
+                        'glow': 'glow 1.5s ease-in-out infinite alternate',
+                        'slide-up': 'slide-up 0.3s ease-out',
+                        'fade-in': 'fade-in 0.5s ease-in'
+                    },
+                    keyframes: {
+                        'pulse-glow': {
+                            '0%': { 
+                                boxShadow: '0 0 5px #ff5252, 0 0 10px #ff5252, 0 0 15px #ff5252',
+                                transform: 'scale(1)'
+                            },
+                            '100%': { 
+                                boxShadow: '0 0 10px #22ff00, 0 0 20px #22ff00, 0 0 30px #22ff00',
+                                transform: 'scale(1.05)'
+                            }
+                        },
+                        'shake': {
+                            '0%': { transform: 'translate(0)' },
+                            '20%': { transform: 'translate(-2px, 2px)' },
+                            '40%': { transform: 'translate(-2px, -2px)' },
+                            '60%': { transform: 'translate(2px, 2px)' },
+                            '80%': { transform: 'translate(2px, -2px)' },
+                            '100%': { transform: 'translate(0)' }
+                        },
+                        'float': {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-10px)' }
+                        },
+                        'glow': {
+                            '0%': { 
+                                textShadow: '0 0 5px #ff5252, 0 0 10px #ff5252, 0 0 15px #ff5252',
+                                color: '#ff5252'
+                            },
+                            '100%': { 
+                                textShadow: '0 0 10px #22ff00, 0 0 20px #22ff00, 0 0 30px #22ff00',
+                                color: '#22ff00'
+                            }
+                        },
+                        'slide-up': {
+                            '0%': { transform: 'translateY(20px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' }
+                        },
+                        'fade-in': {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
     <style>
-      :root {
-        --primary-color: #ff5252;
-        --primary-hover: #22ff00  ;
-        --primary-ahover: #000000;
-        --background: #160505;
-        --text-color: #ffffff;
-        --border-color: #00ffe5;
-        --card-bg: #000000;
+        .loader {
+            width: 44.8px;
+            height: 44.8px;  
+            color: #ff0000;
+            position: relative;
+            background: radial-gradient(11.2px,currentColor 94%,#ffffff00);
+        }
+        
+        .loader:before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 50%;
+            background: radial-gradient(10.08px at bottom right,#000000f5 94%,currentColor) top left,
+                    radial-gradient(10.08px at bottom left ,#22ff00 94%,currentColor) top right,
+                    radial-gradient(10.08px at top right,#22ff00 94%,currentColor) bottom left,
+                    radial-gradient(10.08px at top left ,#000000 94%,currentColor) bottom right;
+            background-size: 22.4px 22.4px;
+            background-repeat: no-repeat;
+            animation: loader 1.5s infinite cubic-bezier(0.3,1,0,1);
+        }
+        
+        @keyframes loader {
+            33% {
+                inset: -11.2px;
+                transform: rotate(0deg);
+            }
+            66% {
+                inset: -11.2px;
+                transform: rotate(90deg);
+            }
+            100% {
+                inset: 0;
+                transform: rotate(90deg);
+            }
         }
 
-        body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      line-height: 1.4;
-      color: var(--text-color);
-      background-color: var(--background);
-      margin: 0;
-      padding: 20px;
-      box-sizing: border-box;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 350px; /* Standard extension popup width */
-      min-height: 200px;
-    }
-
-    .container {
-      background-color: var(--card-bg);
-      border-radius: 12px;
-      padding: 20px;
-      width: 100%;
-      max-width: 400px;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
-    }
-
-    h3 {
-      color: var(--primary-color);
-      text-align: center;
-      margin: 0 0 20px;
-      font-size: 20px;
-      border-bottom: 1px solid var(--border-color);
-      padding-bottom: 10px;
-    }
-
-    .chat-container {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-
-    textarea {
-      width: 100%;
-      padding: 10px;
-      border: 1px solid var(--border-color);
-      border-radius: 8px;
-      resize: none;
-      min-height: 80px;
-      font-family: inherit;
-      font-size: 14px;
-      box-sizing: border-box;
-      background-color: #444654;
-      color: white;
-      transition: border 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    textarea:focus {
-      outline: none;
-      border-color: var(--primary-color);
-      box-shadow: 0 0 5px var(--primary-color);
-    }
-
-    .button-container {
-      display: flex;
-      gap: 10px;
-      justify-content: space-between;
-    }
-
-    button {
-      flex: 1;
-      background-color: var(--primary-color);
-      color: #000;
-      border: none;
-      padding: 10px;
-      border-radius: 8px;
-      cursor: pointer;
-      font-size: 14px;
-      font-weight: bold;
-      transition: all 0.3s ease;
-    }
-
-    button:hover {
-      background-color: var(--primary-hover);
-      transform: translateY(-1px);
-    }
-
-    button:disabled {
-      background-color: #888;
-      cursor: not-allowed;
-      transform: none;
-    }
-
-    .clear-btn {
-      background-color: #ff5252;
-    }
-
-    .clear-btn:hover {
-      background-color: #eeff00;
-    }
-
-    #response {
-      background-color: #0000003b;
-      color: #ffee00;
-      border: 1px solid var(--border-color);
-      border-radius: 8px;
-      padding: 10px;
-      min-height: 60px;
-      max-height: 180px;
-      overflow-y: auto;
-      font-size: 14px;
-      white-space: pre-wrap;
-      word-break: break-word;
-    }
-
-    .status {
-      text-align: center;
-      color: #ccc;
-      font-style: italic;
-      font-size: 12px;
-    }
-
-    .loading {
-      display: inline-block;
-      width: 16px;
-      height: 16px;
-      border: 2px solid rgba(255, 255, 255, 0.3);
-      border-radius: 50%;
-      border-top-color: var(--primary-color);
-      animation: spin 1s linear infinite;
-      vertical-align: middle;
-      margin-left: 5px;
-    }
-
-    @keyframes spin {
-      to { transform: rotate(360deg); }
-    }
-
-    /* Custom Scrollbar */
-    .title {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px; /* space between text and ghost */
-      font-size: 24px;
-      color: rgb(255, 0, 0);
-    }
- 
-    .title a{
-      text-decoration: none;
-      color: rgb(255, 0, 0);
-      transition: 2s ease;
-
-    }
-    .title a:hover {
-      color: var(--primary-ahover) !important;
-   }
-  </style>
-
-    </html>
-    <body>
-      <div class="container">
-        <h3 class="title" style="display: flex; align-items: center; gap: 10px;">
-          <a href="https://c8sm8s.netlify.app/">SANDEEP AI</a>
-          <div class="loader"></div>
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #1a1a1a;
+            border-radius: 3px;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: #ff5252;
+            border-radius: 3px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: #22ff00;
+        }
+    </style>
+</head>
+<body class="bg-background text-white font-sans leading-relaxed m-0 p-5 flex justify-center items-center w-[350px] min-h-[200px] animate-fade-in">
+    <div class="bg-card-bg rounded-xl p-5 w-full max-w-md shadow-2xl border border-border-color/20 animate-slide-up">
+        <h3 class="text-center mb-5 text-xl border-b border-border-color pb-3 flex items-center justify-center gap-3 animate-glow">
+            <a href="https://c8sm8s.netlify.app/" class="no-underline text-primary transition-all duration-500 hover:text-primary-dark animate-float">
+                SANDEEP AI
+            </a>
+            <div class="loader"></div>
         </h3>
-        <div class="chat-container">
-          <textarea id="userInput" rows="3" placeholder="Ask something..." aria-label="Type your question here"></textarea>
-          <div class="button-container">
-            <button id="clearBtn" class="clear-btn">Clear</button>
-            <button id="sendBtn">
-              <span id="buttonText">Send</span>
-              <span id="loadingIndicator" class="loading" style="display: none;"></span>
-            </button>
-          </div>
-          <div class="status" id="status"></div>
-          <div id="response" aria-live="polite"></div>
+        
+        <div class="flex flex-col gap-3">
+            <textarea 
+                id="userInput" 
+                rows="3" 
+                placeholder="Ask something..." 
+                aria-label="Type your question here"
+                class="w-full p-3 border border-border-color rounded-lg resize-none min-h-[80px] font-inherit text-sm bg-gray-700 text-white transition-all duration-300 focus:outline-none focus:border-primary focus:shadow-lg focus:shadow-primary/30 focus:scale-[1.02] placeholder-gray-400"
+            ></textarea>
+            
+            <div class="flex gap-3 justify-between">
+                <button 
+                    id="clearBtn" 
+                    class="flex-1 bg-red-500 text-black border-none p-3 rounded-lg cursor-pointer text-sm font-bold transition-all duration-300 transform hover:bg-yellow-400 hover:scale-105 hover:shadow-lg hover:shadow-yellow-400/30 active:scale-95 disabled:bg-gray-600 disabled:cursor-not-allowed disabled:transform-none hover:animate-shake"
+                >
+                    <span class="inline-block transition-transform duration-200 hover:rotate-12">🗑️</span>
+                    Clear
+                </button>
+                
+                <button 
+                    id="sendBtn"
+                    class="flex-1 bg-primary text-black border-none p-3 rounded-lg cursor-pointer text-sm font-bold transition-all duration-300 transform hover:bg-primary-hover hover:scale-105 hover:shadow-lg hover:shadow-primary-hover/30 active:scale-95 disabled:bg-gray-600 disabled:cursor-not-allowed disabled:transform-none hover:animate-pulse-glow relative overflow-hidden group"
+                >
+                    <span class="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700"></span>
+                    <span id="buttonText" class="relative z-10 inline-flex items-center gap-2">
+                        <span class="transition-transform duration-200 group-hover:rotate-12">🚀</span>
+                        Send
+                    </span>
+                    <span id="loadingIndicator" class="hidden relative z-10">
+                        <svg class="animate-spin h-4 w-4 inline-block" fill="none" viewBox="0 0 24 24">
+                            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                        </svg>
+                        Processing...
+                    </span>
+                </button>
+            </div>
+            
+            <div id="status" class="text-center text-gray-400 italic text-xs transition-all duration-300"></div>
+            
+            <div 
+                id="response" 
+                aria-live="polite"
+                class="bg-response-bg text-response-text border border-border-color rounded-lg p-3 min-h-[60px] max-h-[180px] overflow-y-auto text-sm whitespace-pre-wrap break-words transition-all duration-300 hover:shadow-lg hover:shadow-border-color/20"
+            ></div>
         </div>
-      </div></a>
-    
-      <script src="backend.js"></script>
-    </body>
-    
+    </div>
 
-    
-
+    <script src="backend.js"></script>
+</body>
+</html>
