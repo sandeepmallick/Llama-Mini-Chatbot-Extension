@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const API_URL = 'https://api.groq.com/openai/v1/chat/completions';
     const API_KEY = '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'; // Replace with your Groq API key
     
-    const MODEL_NAME = 'llama3-70b-8192';
+    const MODEL_NAME = 'llama-3.1-8b-instant';
 
     userInput.focus();
 
@@ -110,7 +110,7 @@ async function getLlamaResponse(userMessage) {
       'Authorization': `Bearer ${API_KEY}`
     },
     body: JSON.stringify({
-      model: 'llama3-70b-8192',
+      model: 'llama-3.1-8b-instant',
       messages: [
         { role: 'system', content: 'You are a helpful assistant.' },
         { role: 'user', content: userMessage }
@@ -122,3 +122,4 @@ async function getLlamaResponse(userMessage) {
   const data = await response.json();
   return data.choices[0].message.content;
 }
+
