@@ -1,5 +1,6 @@
 # SANDEEP AI - Chrome Mini Chatbot Extension
 Sandeep AI is a lightweight Chrome extension that brings the power of LLAMA API right into your browser. Ask questions, get smart answers instantly, and enjoy a minimalist design for quick interactions.
+https://github.com/sandeepmallick/Llama-Mini-Chatbot-Extension/issues/2#issue-3625657044
 
 # Features
 Chat with LLaMA API from your browser
